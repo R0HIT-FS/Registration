@@ -19,7 +19,7 @@ export default function DeleteCollection() {
                 return;
             }
             try {
-                const response = await fetch(`/api/drop?name=${collectionName}`, {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/drop?name=${collectionName}`, {
                     method: 'DELETE',
                 });
     
