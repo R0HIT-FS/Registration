@@ -293,10 +293,11 @@ const page = () => {
                       className="border-2 border-[#27272A] bg-[#18181A] py-6"
                       type="number"
                       id="transaction"
-                      placeholder="Enter digits"
+                      placeholder="Enter here"
                       onChange={handleChange}
                       name="transaction"
                       value={formData.transaction}
+                      max={4}
                     />
                   </div>
                 )}
