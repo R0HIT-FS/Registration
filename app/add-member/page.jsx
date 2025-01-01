@@ -42,7 +42,7 @@ const page = () => {
     phone: "",
     gender: "",
     paid: "",
-    transaction:""
+    // transaction:""
   });
 
   const handleChange = (e) => {
@@ -286,7 +286,7 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                {formData.paid == "Yes" && (
+                {/* {formData.paid == "Yes" && (
                   <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="transaction">Last 4 digits of your UPI Transaction:</Label>
                     <Input
@@ -300,7 +300,7 @@ const page = () => {
                       max={4}
                     />
                   </div>
-                )}
+                )} */}
               </div>
               {/* <Button id="addBtn">Update</Button> */}
               <div className="flex justify-between mt-5">
