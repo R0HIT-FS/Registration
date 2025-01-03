@@ -97,7 +97,7 @@ const MemberCard = async ({ user }) => {
       <CardHeader>
         <div className="flex justify-start">
           <Link href={`/${user._id}`}>
-            <CardTitle className="text-white text-2xl hover:text-muted break-words">
+            <CardTitle className="text-white text-2xl hover:text-muted break-words cardBreak">
               {user.name}
             </CardTitle>
           </Link>
