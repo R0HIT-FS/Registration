@@ -37,6 +37,8 @@ const InfoCard = ({user}) => {
     <p className='font-light  bg-[#18181A] mb-1 p-3 rounded-md'>Contact : <span className='font-medium'>{user?.phone}</span></p>
     <p className='font-light  bg-[#18181A] mb-1 p-3 rounded-md'>Gender : <span className='capitalize font-medium'>{user?.gender}</span></p>
     <p className='font-light  bg-[#18181A] mb-1 p-3 rounded-md'>Payment : {user?.paid.toLowerCase()=="yes"?<span className='capitalize font-normal px-2 rounded-full bg-green-500'>Done</span>:<span className='capitalize font-normal px-2 rounded-full bg-red-500'>Pending</span>}</p>
+    <p className='font-light  bg-[#18181A] mb-1 p-3 rounded-md'>Payment Method : <span className='capitalize font-medium'>{user?.method?user.method:"Not Avaliable" }</span></p>
+    <p className='font-light  bg-[#18181A] mb-1 p-3 rounded-md'>Transaction ID : <span className='capitalize font-medium'>{user?.transaction?user.transaction:"Not Avaliable" }</span></p>
   </CardContent>
   <CardFooter>
     {/* <p>Card Footer</p> */}
