@@ -12,7 +12,7 @@ export async function POST(request) {
   const res = NextResponse.next(); 
   setCorsHeaders(res);
   try {
-    const { name, age, gender, paid, phone } = await request.json();
+    const { name, age, gender, paid, phone,method, transaction } = await request.json();
     // await connectToDb();
     await connectToDb();
     let user = await User.create({
@@ -21,6 +21,8 @@ export async function POST(request) {
       gender,
       paid,
       phone,
+      method,
+      transaction
     });
     return NextResponse.json(user,{status:201})
   } catch (error) {

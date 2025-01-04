@@ -42,7 +42,8 @@ const page = () => {
     phone: "",
     gender: "",
     paid: "",
-    // transaction:""
+    method:"",
+    transaction:""
   });
 
   const handleChange = (e) => {
@@ -286,6 +287,46 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
+                {formData.paid== "Yes" && (<div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="framework">Payment Method:</Label>
+                  <Select
+                    name="method"
+                    value={formData.method}
+                    onValueChange={(value) =>
+                      handleChange({
+                        target: { name: "method", value },
+                      })
+                    }
+                  >
+                    <SelectTrigger
+                      className="border-2 border-[#27272A] bg-[#18181A] py-6"
+                      id="framework"
+                      required
+                    >
+                      <SelectValue placeholder="Select" required />
+                    </SelectTrigger>
+                    <SelectContent position="popper" required>
+                      <SelectItem value="Online">Online</SelectItem>
+                      <SelectItem value="Cash">Cash</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>)}
+                {formData.method == "Online" && (
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="transaction">Last 4 digits of your UPI Transaction:</Label>
+                    <Input
+                      className="border-2 border-[#27272A] bg-[#18181A] py-6"
+                      type="number"
+                      id="transaction"
+                      placeholder="Enter here"
+                      onChange={handleChange}
+                      name="transaction"
+                      value={formData.transaction}
+                      onKeyDown={preventEnterKey}
+                      required
+                    />
+                  </div>
+                )}
                 {/* {formData.paid == "Yes" && (
                   <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="transaction">Last 4 digits of your UPI Transaction:</Label>
