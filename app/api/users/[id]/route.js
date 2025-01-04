@@ -11,9 +11,9 @@ export async function PUT(request,{params}){
     const res = NextResponse.next(); 
     setCorsHeaders(res);
         const {id} = params;
-        const {newName:name, newAge:age,newNumber:phone,newGender:gender,newPaid:paid} = await request.json();
+        const {newName:name, newAge:age,newNumber:phone,newGender:gender,newPaid:paid,newMethod:method,newTransaction:transaction} = await request.json();
         await connectToDb();
-       const updatedUser =  await User.findByIdAndUpdate({_id:id},{name,age,phone,paid,gender}, { new: true });
+       const updatedUser =  await User.findByIdAndUpdate({_id:id},{name,age,phone,paid,gender,method,transaction}, { new: true });
         return NextResponse.json({message:updatedUser},{status:200})
 }
 

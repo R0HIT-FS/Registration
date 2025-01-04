@@ -41,14 +41,29 @@ const EditForm = ({ data }) => {
     newNumber: data.phone,
     newGender: data.gender,
     newPaid: data.paid,
+    newMethod: data.method,
+    newTransaction:data.transaction
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    // setFormData((prevFormData) => ({
+    //   ...prevFormData,
+    //   [name]: value,
+    // }));
+
+    setFormData((prevFormData) => {
+      const updatedFormData = { ...prevFormData, [name]: value };
+  
+      // Reset payment method and transaction if newPaid is "No"
+      if (name === "newPaid" && value === "No") {
+        updatedFormData.newMethod = "";
+        updatedFormData.newTransaction = null;
+      }
+  
+      return updatedFormData;
+    });
+
   };
 
   const handleClick = () => {
@@ -97,8 +112,14 @@ const EditForm = ({ data }) => {
     try {
       const phone = document.getElementById("phone").value;
       const age = document.getElementById("age").value;
+      // const paid = document.getElementById("paid").value;
+      // const transaction = document.getElementById("transaction").value;
+      const paymethod = document.getElementById("paymethod");
+      console.log(paymethod);
 
-      if (phone.length < 10 || age < 0 || age == "") {
+
+
+      if (phone.length < 10 || age <= 0 || age == "") {
         // alert("Contact No. or Age Invalid!");
         handleContact();
         setbtntext("Update");
@@ -288,6 +309,47 @@ const EditForm = ({ data }) => {
                     </SelectContent>
                   </Select>
                 </div>
+                {formData.newPaid== "Yes" && (<div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="framework">Payment Method:</Label>
+                  <Select
+                    name="newMethod"
+                    value={formData.newMethod}
+                    id="paymethod"
+                    onValueChange={(value) =>
+                      handleChange({
+                        target: { name: "newMethod", value },
+                      })
+                    }
+                  >
+                    <SelectTrigger
+                      className="border-2 border-[#27272A] bg-[#18181A] py-6"
+                      id="framework"
+                      required
+                    >
+                      <SelectValue placeholder="Select" required />
+                    </SelectTrigger>
+                    <SelectContent position="popper" required>
+                      <SelectItem value="Online">Online</SelectItem>
+                      <SelectItem value="Cash">Cash</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>)}
+                {formData.newMethod == "Online" && formData.newPaid == "Yes" && (
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="transaction">Last 4 digits of your UPI Transaction:</Label>
+                    <Input
+                      className="border-2 border-[#27272A] bg-[#18181A] py-6"
+                      type="number"
+                      id="transaction"
+                      placeholder="Enter here"
+                      onChange={handleChange}
+                      name="newTransaction"
+                      value={formData.newTransaction}
+                      // onKeyDown={preventEnterKey}
+                      required
+                    />
+                  </div>
+                )}
               </div>
               {/* <Button id="addBtn">Update</Button> */}
               <div className="flex justify-between mt-5">
