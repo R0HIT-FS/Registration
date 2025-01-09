@@ -250,7 +250,7 @@ const page = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col space-y-1.5">
+                <div className="flex flex-col space-y-1.5 mb-4">
                   <Label htmlFor="framework">Registration Fee Paid:</Label>
                   <Select
                     name='paid' value={formData.paid}
@@ -270,7 +270,7 @@ const page = () => {
                   </Select>
                 </div>
               </div>
-              {formData.paid== "Yes" && (<div className="flex flex-col space-y-1.5">
+              {formData.paid== "Yes" && (<div className="flex flex-col space-y-1.5 mb-4">
                   <Label htmlFor="framework">Payment Method:</Label>
                   <Select
                     name="method"
