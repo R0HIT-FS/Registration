@@ -18,7 +18,7 @@ import {
 const TableCard = ({user}) => {
   return (
     <div className="tile w-full flex items-center justify-between p-4 border-b-2 border-[#27272A]">
-                    <Link href={`/edit/${user._id}`} style={{display:"block"}}><p className="text-left  w-1/3 capitalize text-sm md:text-md font-medium text-white">{user.name}</p></Link>
+                    <p className="text-left  w-1/3 capitalize text-sm md:text-md font-medium text-white">{user.name}</p>
                     <p className="text-center w-1/3 hidden md:block text-sm md:text-md text-white">{user.age}</p>
                     <p className="text-center w-1/3 hidden md:block text-sm md:text-md text-white">{user.gender}</p>
                     <p className="text-center w-1/3 hidden md:block text-sm md:text-md text-white">{user.phone}</p>
